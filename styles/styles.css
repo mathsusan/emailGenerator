@@ -1,0 +1,324 @@
+body, #body_style, table.body, html {
+      background:#fff;
+   }
+  .ExternalClass {width:100%;}
+
+
+  img {
+  border: 0;
+  height: auto;
+  line-height: 100%;
+  outline: none;
+  text-decoration: none;
+  -ms-interpolation-mode: bicubic;
+}
+
+.container {
+  padding: 24px;
+}
+
+container p {
+  padding: 0 200px;
+}
+
+body,
+table.body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+td,
+th,
+a,
+table.button td a,
+table.tiny-button td a,
+table.small-button td a,
+table.medium-button td a,
+table.large-button td a  {
+  font-family: "Helvetica-Light", "Arial", sans-serif;
+  font-weight: lighter;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  word-break: keep-all;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
+}
+
+th {
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  border-collapse: collapse !important;
+  padding: 0;
+  vertical-align: middle;
+  text-align: left;
+}
+
+th.wrapper {
+  padding: 20px 20px 0px 0px;
+  position: relative;
+}
+
+table.row th.last,
+table.container th.last {
+  padding-right: 0px;
+}
+
+.bodyParagraph {
+  color: #858688;
+  font-size: 16px;
+}
+
+.bodyParagraph p {
+  margin-bottom: 26px;
+  max-width: 523px;
+}
+
+p.header {
+  color: #858688;
+  font-size: 20px;
+  line-height: 32px;
+  margin-bottom: 11px;
+  max-width: 523px;
+}
+
+p.lead {
+  color: #343537;
+  font-size: 40px;
+  line-height: 52px;
+  max-width: 523px;
+  margin-bottom: 0px;
+}
+
+
+p {
+  font-size: 16px;
+  line-height: 24px;
+  color: #858688;
+}
+
+.center p {
+  text-align: none;
+}
+
+td.copy {
+  padding-top: 22px;
+  padding-bottom: 31px;
+}
+
+
+.bodyImage{
+  padding-top: 4px;
+  padding-bottom: 31px;
+}
+
+table.button td {
+  background: #3b9832;
+  border: none;
+  border-radius: 2px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+table.button td a{
+  color: white;
+}
+
+.buttontd {
+  padding-bottom: 43px;
+  padding-top: 4px;
+}
+
+table.button td a:visited {
+  color: #fff;
+}
+
+table.button td a {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+table.row td.last,
+table.container td.last {
+  padding-right: 24px;
+}
+
+table.container.td {
+  padding-bottom: 0px;
+}
+
+td.wrapper.message {
+  padding-bottom: 0px;
+}
+
+td.wrapper.last {
+  padding-top: 0px;
+}
+
+.indented {
+  padding: 0 48px;
+  padding-bottom: 20px;
+}
+
+
+.first {
+  vertical-align: top;
+}
+
+.twocol {
+  padding-bottom: 16px;
+}
+
+.mainbar {
+  margin-right: 6px;
+}
+
+.mainbar td.copy {
+  padding-top: 20px;
+}
+
+.sidebar {
+  margin-top: 30px;
+  width: 240px;
+  vertical-align: top;
+}
+
+.sidebar tr td table
+{
+  width: 100%;
+}
+
+.sidebarsecondary {
+  font-size:  14px;
+}
+
+.graysidebar{
+    background: #f5f5f6;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.description {
+  padding-top: 0px;
+  font-size: 14px;
+  line-height: 24px;
+  color: #858688;
+}
+
+
+.closing p{
+  margin-bottom: 2px;
+  color: #6a6b6c;
+}
+
+.copyright p {
+  color: #aeaeaf;
+  line-height: 16px;
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+
+
+/* don't let ios change our font size */
+div, p, a, li, td { -webkit-text-size-adjust:none; }
+
+@media only screen and (max-width: 600px) {
+  table[class="body"] .wrapper {
+    padding-right: 24px !important;
+    padding-left: 16px !important;
+  }
+  table[class="body"] .wrapper.copyright {
+    padding-top: 14px !important;
+  }
+  table[class="body"] .wrapper.last.help {
+    padding-top: 12px !important;
+  }
+  table[class="body"] td.bodyParagraph{
+    padding-bottom: 1px !important;
+  }
+  table[class="body"] td.bodyParagraph p {
+    font-size: 14px !important;
+    margin-bottom: 9px !important;
+  }
+  table[class="body"] td.closing p {
+    font-size: 14px !important;
+    margin-bottom: 3px !important;
+    line-height: 20px !important;
+  }
+  
+  table[class="body"] .secondarymsg{
+    padding-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  table[class="body"] table.secondarymsg p {
+    font-size: 14px !important;
+    margin-bottom: 0px !important;
+  }
+
+  table[class="button"] td a {
+    font-size: 16px !important;
+  }
+  table[class="button"] td {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+  }
+  td[class="buttontd"] {
+    padding-bottom: 18px !important;
+    padding-top: 6px !important;
+  }
+  td[class="copy"] {
+    padding-top: 2px !important;
+    padding-bottom: 10px !important;
+  }
+
+  p[class="header"] {
+    font-size: 16px !important;
+    line-height: 24px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 4px !important;
+  }
+  p[class="lead"] {
+    font-size: 20px !important;
+    line-height: 32px !important;
+    padding-bottom: 0px !important;
+  }
+  td[class="copyright"] p {
+    font-size: 12px !important;
+  }
+  table[class="body"] img.logo {
+    width: 75px !important;
+    height: 35px !important;
+  }
+  table[class="body"] p.indented {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+  }
+  img[class="bodyImage"]{
+    padding-top: 5px !important;
+    padding-bottom: 7px !important;
+  }
+  table[class="sidebar"]{
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+  }
+    table[class="graysidebar"] {
+    padding-top: 5px !important;
+    font-size: 12px !important;
+  }
+}
+
