@@ -5,9 +5,9 @@ I was looking for a way to create html email for a project where I could easily 
 ## Getting Started
 
 Clone or download this repo and use it to generate your email.
-```npm install
+``npm install
 gulp serve
-```
+``
 
 ## Testing the email
 The generated html will be in build/index.html
