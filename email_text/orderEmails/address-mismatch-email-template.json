@@ -1,0 +1,19 @@
+{
+    "emailName": "PSTN_addressmismatch",
+    "template": "BasicTemplate",     
+    "header": "Order Issue for $customerName",
+    "message": "Address mismatch",
+    "firstParagraph": "Order #$orderId-$batchId",
+    "secondParagraph": "The address provided in the Online does not match the address associated with request. Please submit more information.",
+    "thirdParagraph": " ",
+    "uniqueemailID": "EMAIL08",
+    "help_location": "https://www.google.com/",
+    "marketing": "We sell cool stuff.",
+    "sent": "This message was sent to",
+    "unsubscribe": "Unsubscribe",
+    "unsubscribe_link": "%tag_unsubscribe_url%",
+    "recipient": "$RECIPIENT",
+     "help_text": "Need help with Crazy People Dot COM?",
+    "help_link": "Online help",
+    "help_second": " "
+}

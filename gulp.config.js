@@ -1,15 +1,17 @@
 module.exports = function() {
-
+var build = 'build';
 
 	var config = {
 		templates: 'templates/*',
-		build: 'build/',
+		build: build,
 		defaultPort: 8080,
 		dist: 'dist/',
 		emailtext: 'email_text',
 		html: 'temp/*.html',
 		styles: 'styles/*.css',
-		temp: 'temp/'
+		temp: 'temp/',
+		htmlemails: build + '/html_emails',
+    	textemails: build + '/text_emails',
 	}
 
 	return config;

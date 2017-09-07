@@ -1,0 +1,23 @@
+{
+    "emailName": "trial-ext-customer",
+    "template": "SecondaryMsgTemplate",
+     
+    "header": "Good news!",
+    "message": "$CUSTOMER_NAME wants to order or extend their trial",
+    "firstParagraph": "Customer contact info:",
+    "secondParagraph": "$CUSTOMER_NAME <br> $CUSTOMER_EMAIL<br>$!PHONE_NUMBER <br>$!WEBEX_SITE_URL ",
+    "thirdParagraph": "Please use the same Customer Admin email address and WebEx URL (if applicable) used in the trial for CCW Order to match and convert. ",
+    "textlink": "Learn more,",
+    "link_dest": "$HELP_ARTICLE",
+    "secondaryMsg": "about Crazy People Dot COM, where teams do their best work together.",
+    "uniqueemailID": "EMAIL07",
+    "help_location": "$URL",
+    "sent": "This message was sent to",
+    "recipient": "$RECIPIENT",
+    "unsubscribe": "Unsubscribe",
+    "unsubscribe_link": "%tag_unsubscribe_url%",
+    "marketing": "We sell cool stuff",
+     "help_text": "Need help with Crazy People Dot COM?",
+    "help_link": "Online help",
+    "help_second": " "
+}

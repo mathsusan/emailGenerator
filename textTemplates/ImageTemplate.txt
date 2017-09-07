@@ -1,0 +1,19 @@
+
+{{$$HEADER}}
+{{$$MESSAGE}}
+
+{{$$PARA1}}
+{{$$PARA2}}
+{{$$PARA3}}
+
+{{$$BUTTONTXT}} go to {{$$CTALINK}}
+{{$$SECONDARYMSG}} {{$$TEXTLINK}} go to   {{$$LINK}}
+
+{{$$CLOSING}}
+
+{{$$MARKETING}}
+
+{{$$TEXTCOPYRIGHT}}
+{{$$EMAILID}} {{$$UNSUBSCRIBE}} go to {{$$UNSLINK}}  {{$$SENT}} {{$$RECIPIENT}}
+
+For help go to {{$$LOCHELP}}

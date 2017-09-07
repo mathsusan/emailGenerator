@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link inline rel="stylesheet" href="../styles/ink.css">
+  <link inline rel="stylesheet" href="..//styles/styles.css">
+</head>
+
+<body ng-app="template" ng-controller="IframeCtrl" >
+<!--[if mso]>
+<style type="text/css">
+  body, table, td, p h1,h2,h3,h4,h5,h6,th,a{font-family: Helvetica, Arial sans-serif !important;}
+</style>
+<![endif]-->
+<div style="display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+  {{$$HEADER}} {{$$MESSAGE}}
+</div>
+  <table class="body">
+    <tr>
+      <td class="center" align="center" valign="top">
+        <center>
+          <table class="row header">
+            <tr>
+              <td class="center" align="center">
+                <center>
+                  <!-- logo header -->
+                  <table class="container">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="logo_table">
+                              <a href="{{$$PORTALLINK}}">
+                                 <img class="logo" src="{{$$LOGO}}" alt="{{$$ALTLOGO}}" width="170" height="41" style="padding-top: 24px; width: 170px;">
+                              </a> 
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </center>
+              </td>
+            </tr>
+          </table>
+          <!-- main message -->
+          <table class="container">
+            <tr>
+              <td>
+                <table class="row">
+                  <tr>
+                    <td class="wrapper last">
+                      <table class="twelve columns">
+                        <tr>
+                          <td class="copy">
+                            <p class="header">{{$$HEADER}}</p>
+                            <p class="lead">{{$$MESSAGE}}</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+                <!-- Paragraph text -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper last">
+                      <table class="twelve columns">
+                        <tr>
+                          <td class="bodyParagraph">
+                            <p>{{$$PARA1}}</p>
+                            <p>{{$$PARA2}}</p>
+                            <p>{{$$PARA3}}</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+                <!-- end Paragraph text -->
+                <!-- button -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper last">
+                      <table>
+                        <tr>
+                          <td class="buttontd">
+                            <table class="button">
+                              <tr>
+                                <td>
+                                  <a href="{{$$CTALINK}}">{{$$BUTTONTXT}}</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+                <!-- end button -->
+              </td>
+            </tr>
+          </table>
+          <!-- gray box -->
+          <table class="row header graybox">
+            <tr>
+              <td class="center" align="center">
+                <center>
+                  <table class="container">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="graybox">
+                              <p><a href='{{$$LINK}}'>{{$$TEXTLINK}}</a> {{$$SECONDARYMSG}}</p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </center>
+              </td>
+            </tr>
+          </table>
+          <!-- end gray box -->
+          <table class="row header">
+            <tr>
+              <td class="center" align="center">
+                <center>
+                  <table class="container" style="width: 600px;">
+                    <tr>
+                      <td>
+                        <!-- closing  -->
+                        <table class="row">
+                          <tr>
+                            <td class="wrapper signature">
+                              <table>
+                                <tr>
+                                  <td class="closing">
+                                    <p>{{$$CLOSING}}</p>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <table class="row">
+                          <tr>
+                            <td class="wrapper signature">
+                              <table>
+                                <tr>
+                                  <td class="marketingline">
+                                    <p>{{$$MARKETING}}</p>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- end closing -->
+                        <!-- footer -->
+                        <table class="row footer">
+                          <tr>
+                            <th class="wrapper copyright">
+                              <table>
+                                <tr>
+                                  <td class="copyright">
+                                    <p>{{$$COPYRIGHT}}</p>
+                                    <p>{{$$SENT}} <span class="ciscoaddress">{{$$RECIPIENT}} {{$$FROM}}</span>  <a href="{{$$UNSLINK}}">{{$$UNSUBSCRIBE}}</a></p> 
+                                    <p>{{$$HELPTEXT}}<a href='{{$$LOCHELP}}'> {{$$HELPLINK}}</a></p>
+                                    <p><span class="ciscoaddress">Cisco Systems, Inc. 170 West Tasman Drive, San Jose, CA 95134.</span></p>
+                                     <p>{{$$EMAILID}} </p>
+                                  </td>
+                                </tr>
+                              </table>
+                            </th>
+                          </tr>
+                        </table>
+                        <!-- end footer -->
+                      </td>
+                    </tr>
+                  </table>
+                </center>
+              </td>
+            </tr>
+          </table>
+          </center>
+      </td>
+    </tr>
+  </table>
+  <!-- body end -->
+</body>
+<script src="../../bower_components/angular/angular.js"></script>
+<script src="../../bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script>
+  angular.module('template', ['ngSanitize']).controller('IframeCtrl', function($scope) {
+    window.update = function(data) {
+      $scope.$apply(function() {
+        $scope[data.name] = (data.value.length > 0) ? data.value: (data.type !== 'textarea') ? data.default: null;
+      });
+    };
+  });
+</script>
+</html>

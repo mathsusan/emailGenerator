@@ -1,0 +1,25 @@
+{
+    "emailName": "trial-expired-notify",
+    "template": "twocolumns_button",
+       
+    "message": "$CUSTOMER_NAME must purchase Crazy People Dot COM by $TRIAL_END_PLUS_GRACE_DATE or their data will no longer be available.",
+    "firstParagraph": "We notified $CUSTOMER_NAME of their trial expiration and the conclusion of their trial services and admin privileges. We also informed them that if they decide to purchase before $TRIAL_END_PLUS_GRACE_DATE they can keep their organization's data.",
+    "secondParagraph": "Get insights into $CUSTOMER_NAME trial usage and discuss their purchase options with them today.",
+    "thirdParagraph": " ",
+    "button_text": "View Customer",
+    "button_link": "$NOTIFY_PARTNER_URL",
+    "sidebartext": "Does your customer have hardware to return?",
+    "sidebarsecondary": "If your customer had hardware during the trial and has chosen not to convert the services, please encourage them to return the hardware within 2 weeks of the trial end. They may simply use the original packaging and return shipping label they received at the start of the trial. <br> If additional help is needed, contact our Help Desk at: 1(800)888-8888",
+    "secondaryClosingLine": "Buy our stuff now",
+    "footerMsg": " ",
+    "uniqueemailID": "EMAIL06",
+    "help_location": "$NEW_HELP_URL_KEY",
+    "sent": "This message was sent to",
+    "recipient": "$RECIPIENT",
+    "unsubscribe": "Unsubscribe",
+    "unsubscribe_link": "%tag_unsubscribe_url%",
+    "marketing": "Less email.  More agility.  Better teamwork.",
+     "help_text": "Need help with Crazy People Dot COM?",
+    "help_link": "Online help",
+    "help_second": " "
+}

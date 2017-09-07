@@ -1,0 +1,19 @@
+{
+    "emailName": "OrderSTatusTemplate",
+    "template": "BasicTemplate",
+    "header": "Order Issue for $CUSTOMER_NAME",
+    "message": "Customer Information Needed",
+    "firstParagraph": "Order #$orderId-$batchId",
+    "secondParagraph": "$ORDER_HANDLER needs a copy of $customerName's customer information to confirm the account. ",
+    "thirdParagraph": " ",
+    "uniqueemailID": "EMAL08",
+    "help_location": "https://www.google.com/",
+    "marketing": "We sell cool stuff",
+    "sent": "This message was sent to",
+    "unsubscribe": "Unsubscribe",
+    "unsubscribe_link": "%tag_unsubscribe_url%",
+    "recipient": "$RECIPIENT",
+     "help_text": "Need help with Crazy People Dot COM?",
+    "help_link": "Online help",
+    "help_second": " "
+}

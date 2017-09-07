@@ -1,5 +1,5 @@
-body, #body_style, table.body, html {
-      background:#fff;
+body, #body_style {
+            background:#fff;
    }
   .ExternalClass {width:100%;}
 
@@ -11,14 +11,6 @@ body, #body_style, table.body, html {
   outline: none;
   text-decoration: none;
   -ms-interpolation-mode: bicubic;
-}
-
-.container {
-  padding: 24px;
-}
-
-container p {
-  padding: 0 200px;
 }
 
 body,
@@ -46,11 +38,19 @@ table {
   border-collapse: collapse;
 }
 
+table.body {
+  background #fff;
+}
+
 td {
   word-break: keep-all;
   -webkit-hyphens: none;
   -moz-hyphens: none;
   hyphens: none;
+}
+
+a {
+  color: #07C1E4;
 }
 
 th {
@@ -74,6 +74,27 @@ table.container th.last {
   padding-right: 0px;
 }
 
+.logo_table {
+  width: 100%;
+}
+.logo_border {
+  border-bottom: solid 1px;
+  border-color: #D7D7D8;
+}
+
+.logo_border td {
+  padding-bottom: 6px;
+}
+
+.logo {
+  padding-bottom: 2px;
+  min-width: 100px;
+}
+.cisco-only {
+  padding-bottom: 2px;
+}
+
+
 .bodyParagraph {
   color: #858688;
   font-size: 16px;
@@ -85,37 +106,69 @@ table.container th.last {
 }
 
 p.header {
-  color: #858688;
+  color: #AEAEAF;
   font-size: 20px;
-  line-height: 32px;
+  line-height: 24px;
   margin-bottom: 11px;
   max-width: 523px;
 }
 
 p.lead {
-  color: #343537;
-  font-size: 40px;
-  line-height: 52px;
+  color: #6A6B6C;
+  font-size: 30px;
+  line-height: 40px;
   max-width: 523px;
   margin-bottom: 0px;
 }
-
-
 p {
   font-size: 16px;
   line-height: 24px;
   color: #858688;
+  min-height: 0px;
 }
 
 .center p {
   text-align: none;
 }
 
+.centered-email  p{
+  max-width: 580px;
+  text-align: center;
+}
+
+p.lead.new-lead {
+  font-size: 24px;
+  line-height: 26px;
+  max-width: 580px;
+}
+
+.centered-footer {
+
+  border-top: solid 1px #D7D7D8;
+  padding-top: 6px;
+}
+
+.centered-footer p a {
+  padding-right: 24px;
+  color: #aeaeaf;
+}
+
+
 td.copy {
+  padding-top: 12px;
+  padding-bottom: 24px;
+}
+
+td.activationCode {
+  vertical-align: middle;
   padding-top: 22px;
   padding-bottom: 31px;
 }
 
+td.deviceActivationCode {
+  vertical-align: middle;
+  padding-bottom: 15px;
+}
 
 .bodyImage{
   padding-top: 4px;
@@ -123,17 +176,16 @@ td.copy {
 }
 
 table.button td {
-  background: #3b9832;
+  background: #07C1E4;
   border: none;
   border-radius: 2px;
+}
+
+table.button td {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
-}
-
-table.button td a{
-  color: white;
 }
 
 .buttontd {
@@ -167,9 +219,57 @@ td.wrapper.last {
   padding-top: 0px;
 }
 
+.placeName {
+  color: #14A792;
+}
+
+.qrcode {
+  font-size: 24px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  padding-top: 16px;
+}
+
+.qrcodeBig {
+  color: #14A792;
+  font-size: 26px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+td.qrcode {
+  padding-top: 32px;
+}
+
+td.qrcodesm {
+  font-size: 24px;
+  margin-bottom: 0px;
+  padding-bottom: 32px;
+  padding-right: 15px;
+}
+
 .indented {
   padding: 0 48px;
   padding-bottom: 20px;
+}
+.secondarymsg {
+  padding-top: 44px;
+  margin-bottom: 15px ;
+}
+
+.graybox {
+  background: #EBEBEC;
+  margin-top: 3px;
+  margin-bottom: 43px ;
+}
+
+td.graybox {
+  padding-top: 26px;
+  padding-bottom: 20px;
+}
+
+.customerinfo {
+  padding-left: 32px;
 }
 
 
@@ -195,13 +295,17 @@ td.wrapper.last {
   vertical-align: top;
 }
 
+.webexsite2 {
+  font-style: italic;
+}
+
 .sidebar tr td table
 {
   width: 100%;
 }
 
 .sidebarsecondary {
-  font-size:  14px;
+  font-size:  12px;
 }
 
 .graysidebar{
@@ -219,10 +323,50 @@ td.wrapper.last {
   color: #858688;
 }
 
+.activationCodeDescription {
+  padding-top: 9px;
+  font-size: 12px;
+  line-height: 24px;
+  color: #858688;
+}
+
+.outlookmargin {
+  margin: 0 !important;
+}
+
+table.video {
+  border: 0;
+  cellpadding: 0;
+  cellspacing: 0;
+  padding-bottom: 32px;
+}
+
+img.videothumb {
+  max-width: 140px;
+}
+
+.videodesc{
+  padding-left: 24px;
+}
 
 .closing p{
   margin-bottom: 2px;
   color: #6a6b6c;
+}
+
+.closingGray p{
+  margin-bottom: 40px;
+  color: #aeaeaf;
+}
+
+.marketingline p {
+  line-height: 24px;
+  font-size: 14px;
+}
+
+.postScript p {
+  line-height: 24px;
+  font-size: 12px;
 }
 
 .copyright p {
@@ -232,10 +376,27 @@ td.wrapper.last {
   margin-bottom: 0px;
 }
 
+.signature {
+  padding-top: 0px;
+}
+
+.emailaddress {
+  color: #07C1E4;
+}
+
 
 
 /* don't let ios change our font size */
 div, p, a, li, td { -webkit-text-size-adjust:none; }
+
+/*don't let ios change our links
+ @media only screen and (max-width: 1024px) {
+  .ciscoaddress a {
+    color: #AEAEAF !important;
+    text-decoration: none;
+  }
+}*/
+
 
 @media only screen and (max-width: 600px) {
   table[class="body"] .wrapper {
@@ -260,7 +421,35 @@ div, p, a, li, td { -webkit-text-size-adjust:none; }
     margin-bottom: 3px !important;
     line-height: 20px !important;
   }
-  
+  table[class="body"] td.closingGray p {
+    font-size: 14px !important;
+    margin-bottom: 3px !important;
+    line-height: 20px !important;
+  }
+  table[class="body"] td.marketingline p {
+    font-size: 12px !important;
+    margin-bottom: 3px !important;
+    line-height: 16px !important;
+  }
+  table[class="body"] td.postScript p {
+    font-size: 12px !important;
+    margin-bottom: 3px !important;
+    line-height: 16px !important;
+  }
+  table[class="body"] td.graybox p {
+    font-size: 14px !important;
+  }
+  table[class="body"] .graybox{
+    margin-bottom: 20px !important;
+    margin-top: 4px !important;
+  }
+  table[class="body"] .customerinfo{
+    padding-left: 0px !important;
+  }
+  td[class="graybox"] {
+  padding-top: 19px !important;
+  padding-bottom: 7px !important;
+  }
   table[class="body"] .secondarymsg{
     padding-top: 0px !important;
     margin-bottom: 0px !important;
@@ -285,7 +474,10 @@ div, p, a, li, td { -webkit-text-size-adjust:none; }
     padding-top: 2px !important;
     padding-bottom: 10px !important;
   }
-
+  td[class="activationCode"] {
+    padding-top: 2px !important;
+    padding-bottom: 10px !important;
+  }
   p[class="header"] {
     font-size: 16px !important;
     line-height: 24px !important;
@@ -301,8 +493,27 @@ div, p, a, li, td { -webkit-text-size-adjust:none; }
     font-size: 12px !important;
   }
   table[class="body"] img.logo {
-    width: 75px !important;
-    height: 35px !important;
+    width: 170px !important;
+    height: 41px !important;
+  }
+  table[class="body"] img.webexlogo {
+    width: 120px !important;
+    height: 26px !important;
+  }
+  table[class="body"] img.cisco-only {
+    width: 61px !important;
+    height: 32px !important;
+    padding-bottom: 4px !important;
+  }
+  table[class="body"] img.helpbutton {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  table[class="body"] img.qrcode {
+    max-width: 200px !important;
+  }
+  table[class="body"] img.qrcodesm {
+    max-width: 125px !important;
   }
   table[class="body"] p.indented {
       padding-left: 16px !important;
@@ -313,12 +524,27 @@ div, p, a, li, td { -webkit-text-size-adjust:none; }
     padding-bottom: 7px !important;
   }
   table[class="sidebar"]{
-    margin-top: 0px !important;
-    margin-left: 0px !important;
+    margin-top: 17px !important;
+    margin-left: 14px !important;
   }
-    table[class="graysidebar"] {
-    padding-top: 5px !important;
-    font-size: 12px !important;
+   table[class="body"] table.video{
+    margin-left: 24px !important;
+    padding-bottom: 4px !important;
+  }
+   table[class="body"] table.videodesc p {
+    font-size: 14px !important;
+  }
+  table[class="body"] img.videothumb {
+    margin-left: 32px !important;
+  }
+  table[class="body"] .button-col {
+    display: table !important;
+  }
+  table[class="body"] .logo_border  {
+    display: table !important;
+  }
+   table[class="body"] .centered-lead  {
+    display: table !important;
   }
 }
 

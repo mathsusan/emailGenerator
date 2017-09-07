@@ -1,0 +1,25 @@
+{
+    "emailName": "reminder-invite",
+    "template": "SecondaryMsg_ButtonTemplate",
+    "header": "Don&#8217;t forget!",
+     
+    "message": "On $DATE, $INVITER invited you to join a meeting on Crazy People Dot COM.",
+    "firstParagraph": "With Crazy People Dot COM, there's no more meetings about the meeting. $INVITER is already getting more done using Crazy People Dot COM and wants you to join!",
+    "secondParagraph": " ",
+    "thirdParagraph": " ",
+    "textlink": "Learn more",
+    "link_dest": "https://www.google.com/",
+    "secondaryMsg": "about Crazy People Dot COM, where teams do their best work together, using the Crazy People Dot COM app.",
+    "button_text": "Join Now!",
+    "button_link": "$USERURL",
+    "uniqueemailID": "EMAIL04",
+    "sent": " ",
+    "recipient": " ",
+    "marketing": "Having trouble getting started? <a href=\"https://www.google.com/customer/en_us/portal/emails/new\">Contact us.</a> We&#8217;re here to help.",
+    "unsubscribe": "Unsubscribe",
+    "unsubscribe_link": "%tag_unsubscribe_url%",
+    "help_location": "https://www.google.com/",
+     "help_text": "Need help with Crazy People Dot COM?",
+    "help_link": "Online help",
+    "help_second": " "
+}
