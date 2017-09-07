@@ -1,4 +1,4 @@
-##Email Creator
+## Email Creator
 
 I was looking for a way to create html email for a project where I could easily change the words without hunting through all that mess of html.  The gulp process replaces placeholder text with the text from your text files found in the email_text directory.   The first entry in this file is the name of the resulting email file.  The second entry in the file is the name of the email template being used (without the extension).  
 
