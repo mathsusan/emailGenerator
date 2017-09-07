@@ -2,7 +2,6 @@
     "emailName": "reminder-invite",
     "template": "SecondaryMsg_ButtonTemplate",
     "header": "Don&#8217;t forget!",
-     
     "message": "On $DATE, $INVITER invited you to join a meeting on Crazy People Dot COM.",
     "firstParagraph": "With Crazy People Dot COM, there's no more meetings about the meeting. $INVITER is already getting more done using Crazy People Dot COM and wants you to join!",
     "secondParagraph": " ",

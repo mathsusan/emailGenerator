@@ -1,5 +1,5 @@
 {
-    "emailName": "PSTN_addressmismatch",
+    "emailName": "addressmismatch",
     "template": "BasicTemplate",     
     "header": "Order Issue for $customerName",
     "message": "Address mismatch",

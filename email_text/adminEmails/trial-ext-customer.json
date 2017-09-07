@@ -1,7 +1,6 @@
 {
     "emailName": "trial-ext-customer",
     "template": "SecondaryMsgTemplate",
-     
     "header": "Good news!",
     "message": "$CUSTOMER_NAME wants to order or extend their trial",
     "firstParagraph": "Customer contact info:",

@@ -59,9 +59,7 @@ gulp.task('create-htmlemails' , function(callback){
 
   for ( var i in fileList) {
        // skip .DS_Store
-      if ( fileList[i] === config.emailtext + '/.DS_Store' || fileList[i] === config.emailtext + '/admin-service/.DS_Store' || fileList[i] === config.emailtext + '/voicemail/.DS_Store'|| fileList[i] === config.emailtext + '/CIemails/.DS_Store'|| fileList[i] === config.emailtext + '/WorkInProgress/.DS_Store'){
-        log('skipping DS_Store');
-      } else {
+   
         tmpText = fs.readFileSync(fileList[i], 'utf8');
         log('reading ' + fileList[i]);
         dir = fileList[i].replace (/email_text\//, ' ');
@@ -79,7 +77,7 @@ gulp.task('create-htmlemails' , function(callback){
             .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .ciscoaddress a {color: #AEAEAF !important;text-decoration: none;} .header .ciscoaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
             .pipe(gulp.dest(config.htmlemails + '/'  +  dir));
 
-    }
+
   }
     callback();
     return;
@@ -87,33 +85,32 @@ gulp.task('create-htmlemails' , function(callback){
 
 
 gulp.task('create-onemail',['clean-emails'] , function(callback){
+  if (!argv.textfile) {
+      log('Please send in a textfile name --textfile <filename>')
+  }
    var tmpText;
    var emailObject;
-   var file;
-   if (!argv.textfile) {
-       file = config.emailtext + '/emailText.json';
-   } else {
-    file = config.emailtext + '/' + argv.textfile;
-   }
-   
-    tmpText = fs.readFileSync(file, 'utf8');
-    log('reading ' + file);
-    tmpText = tmpText.replace(/^\uFEFF/, '');
-    emailObject = JSON.parse(tmpText);
-
-    var templateToUse = emailObject.template + '.html'
-    stringReplaceText(emailObject, gulp.src(['htmlemailTemplates/' + templateToUse]), false)
-        .pipe(rename('index.html'))
-        .pipe(inlinesource())
-        .pipe(inlineCss({
-            preserveMediaQueries: true,
-        }))
-       .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .ciscoaddress a {color: #AEAEAF !important;text-decoration: none;} .header .ciscoaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
-        .pipe(gulp.dest(config.build));
+   var file = config.emailtext + '/' + argv.textfile;
 
 
-    callback();
-    return;
+   tmpText = fs.readFileSync(file, 'utf8');
+   log('reading ' + file);
+   tmpText = tmpText.replace(/^\uFEFF/, '');
+   emailObject = JSON.parse(tmpText);
+
+   var templateToUse = emailObject.template + '.html'
+   stringReplaceText(emailObject, gulp.src(['htmlemailTemplates/' + templateToUse]), false)
+       .pipe(rename('index.html'))
+       .pipe(inlinesource())
+       .pipe(inlineCss({
+           preserveMediaQueries: true,
+       }))
+      .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .ciscoaddress a {color: #AEAEAF !important;text-decoration: none;} .header .ciscoaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
+       .pipe(gulp.dest(config.build));
+
+
+   callback();
+   return;
 })
 
 gulp.task('create-txtemails', function(callback){
@@ -123,10 +120,7 @@ gulp.task('create-txtemails', function(callback){
   var fileList = getFiles(config.emailtext);
 
   for ( var i in fileList) {
-      // skip .DS_Store
-      if ( fileList[i] === config.emailtext + '/.DS_Store' || fileList[i] === config.emailtext + '/admin-service/.DS_Store' || fileList[i] === config.emailtext + '/voicemail/.DS_Store'|| fileList[i] === config.emailtext + '/CIemails/.DS_Store'|| fileList[i] === config.emailtext + '/WorkInProgress/.DS_Store'){
-        log('skipping DS_Store');
-      } else {
+
         tmpText = fs.readFileSync(fileList[i], 'utf8');
         log('reading ' + fileList[i]);
         dir = fileList[i].replace (/email_text\//, ' ');
@@ -138,7 +132,7 @@ gulp.task('create-txtemails', function(callback){
         stringReplaceText(emailObject, gulp.src(['textTemplates/' + templateToUse]), true)
             .pipe(rename(emailObject.emailName + '.txt'))
             .pipe(gulp.dest(config.textemails + '/' + dir));
-    }
+
   }
     callback();
     return;
@@ -153,7 +147,7 @@ gulp.task('build', function(callback) {
  * Serve and BrowserSync
  */
 
-gulp.task('serve', gulpSequence('build', 'browser-sync'));
+gulp.task('serveone', gulpSequence('build', 'browser-sync'));
 
 gulp.task('browser-sync', function(){
   if (browserSync.active) {
@@ -236,9 +230,10 @@ function getFiles (dir, files_){
     var files = fs.readdirSync(dir);
     for (var i in files){
         var name = dir + '/' + files[i];
+        // don't forget to ignore DS_Store from Mac
         if (fs.statSync(name).isDirectory()){
             getFiles(name, files_);
-        } else {
+        } else if (name.indexOf('DS_Store') === -1 ){
             files_.push(name);
         }
     }
