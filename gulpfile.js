@@ -74,7 +74,7 @@ gulp.task('create-htmlemails' , function(callback){
             .pipe(inlineCss({
                 preserveMediaQueries: true,
             }))
-            .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .ciscoaddress a {color: #AEAEAF !important;text-decoration: none;} .header .ciscoaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
+            .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .crazyaddress a {color: #AEAEAF !important;text-decoration: none;} .header .crazyaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
             .pipe(gulp.dest(config.htmlemails + '/'  +  dir));
 
 
@@ -105,7 +105,7 @@ gulp.task('create-onemail',['clean-emails'] , function(callback){
        .pipe(inlineCss({
            preserveMediaQueries: true,
        }))
-      .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .ciscoaddress a {color: #AEAEAF !important;text-decoration: none;} .header .ciscoaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
+      .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .crazyaddress a {color: #AEAEAF !important;text-decoration: none;} .header .crazyaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
        .pipe(gulp.dest(config.build));
 
 
@@ -278,10 +278,6 @@ function stringReplaceText(emailObject, inputStream, textOnly){
         .pipe(replace('{{$$3THUMB}}', emailObject.video3thumb))
         .pipe(replace('{{$$3VDESC}}', emailObject.video3Desc))
         .pipe(replace('{{$$3ALTTEXT}}', emailObject.video3AltTxt))
-        .pipe(replace('{{$$WEBEXLOGO}}', emailObject.webexlogo))
-        .pipe(replace('{{$$ALTWEBEXLOGO}}', emailObject.webexlogo_alt))
-        .pipe(replace('{{$$CISCOLOGO}}', emailObject.ciscologo))
-        .pipe(replace('{{$$CISCOALTLOGO}}', emailObject.ciscologo_alt))
         .pipe(replace('{{$$MARKETING}}', emailObject.marketing))
         .pipe(replace('{{$$SENT}}', emailObject.sent))
         .pipe(replace('{{$$RECIPIENT}}', emailObject.recipient))

@@ -391,7 +391,7 @@ div, p, a, li, td { -webkit-text-size-adjust:none; }
 
 /*don't let ios change our links
  @media only screen and (max-width: 1024px) {
-  .ciscoaddress a {
+  .crazyaddress a {
     color: #AEAEAF !important;
     text-decoration: none;
   }
