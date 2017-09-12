@@ -300,21 +300,6 @@ function stringReplaceText(emailObject, inputStream, textOnly){
         .pipe(replace('{{$$TEXTCOPYRIGHT}}', commonObject.textcopyright))
         .pipe(replace('{{$$FROM}}', commonObject.from))
 
-        // remove the <script tags at then end
-        .pipe(replace('<script src="../../bower_components/angular/angular.js"></script>', ''))
-        .pipe(replace('<script src="../../bower_components/angular-sanitize/angular-sanitize.js"></script>', ''))
-        .pipe(replace('<script>', ''))
-        .pipe(replace('angular.module(\'template\', [\'ngSanitize\']).controller(\'IframeCtrl\', function($scope) {', ''))
-        .pipe(replace('window.update = function(data) {', ''))
-        .pipe(replace('$scope.$apply(function() {', ''))
-        .pipe(replace('$scope[data.name] = (data.value.length > 0) ? data.value: (data.type !== \'textarea\') ? data.default: null;', ''))
-        .pipe(replace('});', ' '))
-        .pipe(replace('};', ''))
-        .pipe(replace('});', ''))
-        .pipe(replace('</script>\'))', ''))
-        .pipe(replace('ng-controller="IframeCtrl"', ' '))
-        .pipe(replace('ng-app="template"', ' '))
-
         //remove any empty paragraphs
         .pipe(replace('<p> </p>', ' '))
         .pipe(replace('<p class="header"></p>', ' '))
@@ -323,9 +308,9 @@ function stringReplaceText(emailObject, inputStream, textOnly){
       if (textOnly) {
         inputStream
             .pipe(replace('&#8217;', '\''))
-            .pipe(replace('<span class=\'placeName\'>', '' ))
+            .pipe(replace('<span>', ' ' ))
             .pipe(replace('</span>', ' ' ))
-            .pipe(replace('<br>', ''))
+            .pipe(replace('<br>', ' '))
       }
       return inputStream;
 

@@ -2,6 +2,7 @@
   "name": "emails",
   "version": "0.0.0",
   "private": true,
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.10.0",
     "del": "^0.1.1",

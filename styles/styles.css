@@ -90,11 +90,6 @@ table.container th.last {
   padding-bottom: 2px;
   min-width: 100px;
 }
-.cisco-only {
-  padding-bottom: 2px;
-}
-
-
 .bodyParagraph {
   color: #858688;
   font-size: 16px;
@@ -384,18 +379,22 @@ img.videothumb {
   color: #07C1E4;
 }
 
+.crazyaddress a {
+  color: #AEAEAF !important;
+  text-decoration: none;
+}
 
 
 /* don't let ios change our font size */
 div, p, a, li, td { -webkit-text-size-adjust:none; }
 
-/*don't let ios change our links
+/*don't let ios change our links */
  @media only screen and (max-width: 1024px) {
   .crazyaddress a {
     color: #AEAEAF !important;
     text-decoration: none;
   }
-}*/
+}
 
 
 @media only screen and (max-width: 600px) {

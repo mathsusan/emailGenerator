@@ -186,16 +186,4 @@
   </table>
   <!-- body end -->
 </body>
-<script src="../../bower_components/angular/angular.js"></script>
-<script src="../../bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script>
-  angular.module('template', ['ngSanitize']).controller('IframeCtrl', function($scope) {
-    window.update = function(data) {
-      $scope.$apply(function() {
-        $scope[data.name] = (data.value.length > 0) ? data.value: (data.type !== 'textarea') ? data.default: null;
-      });
-    };
-  });
-</script>
-
 </html>
