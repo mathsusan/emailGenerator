@@ -35,17 +35,6 @@ gulp.task('clean-txtemails', function(done){
 });
 
 
-
-gulp.task('inline-css', function(done) {
-  log(config.html);
-  return gulp.src(config.html)
-        .pipe(inlinesource())
-        .pipe(inlineCss({
-          preserveMediaQueries: true,
-        }))
-      .pipe(gulp.dest(config.build), done);
-});
-
 gulp.task('create-all-emails', cb => {
     runSequence ( ['clean-emails', 'clean-txtemails', 'create-htmlemails', 'create-txtemails'], cb);
 });
@@ -105,7 +94,7 @@ gulp.task('create-onemail',['clean-emails'] , function(callback){
        .pipe(inlineCss({
            preserveMediaQueries: true,
        }))
-      .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .crazyaddress a {color: #AEAEAF !important;text-decoration: none;} .header .crazyaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
+      // .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .crazyaddress a {color: #AEAEAF !important;text-decoration: none;} .header .crazyaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
        .pipe(gulp.dest(config.build));
 
 
@@ -140,7 +129,7 @@ gulp.task('create-txtemails', function(callback){
 
 
 gulp.task('build', function(callback) {
-  gulpSequence('clean', 'create-onemail', 'inline-css')(callback)
+  gulpSequence('clean', 'create-onemail')(callback)
 }); 
 
 /**
