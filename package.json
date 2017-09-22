@@ -8,6 +8,7 @@
     "del": "^0.1.1",
     "fs": "0.0.2",
     "gulp": "^3.8.2",
+    "gulp-concat-multi": "^1.0.1",
     "gulp-inline-css": "^3.0.1",
     "gulp-inline-source": "0.0.2",
     "gulp-load-plugins": "^1.1.0",
