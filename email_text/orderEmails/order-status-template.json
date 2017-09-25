@@ -1,6 +1,9 @@
 {
     "emailName": "OrderSTatusTemplate",
-    "template": "BasicTemplate",
+    "twocolumns": "false", 
+    "button": "false",
+    "image": "false",
+    "secondaryMsg": "false",
     "header": "Order Issue for $CUSTOMER_NAME",
     "message": "Customer Information Needed",
     "firstParagraph": "Order #$orderId-$batchId",

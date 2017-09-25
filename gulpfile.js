@@ -13,24 +13,20 @@ var replace = require('gulp-replace');
 var gulpSequence = require('gulp-sequence');
 var concat = require('gulp-concat-multi');
 var $ = require('gulp-load-plugins')({lazy: true});
-
 var port = config.defaultPort;
 
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
 
 gulp.task('clean', function(callback){ 
-  gulpSequence(['clean-emails', 'clean-txtemails', 'clean-htemplates']);
-  callback();
-  return;
+  gulpSequence(['clean-build',  'clean-htemplates'], callback);
 });
 
-gulp.task('clean-emails', function(callback){ 
-     del([config.htmlemails], callback);
-});
-gulp.task('clean-txtemails', function(callback){ 
-     del([config.textemails], callback);
-});
+gulp.task('clean-build', function(callback){
+  del([config.build], callback)
+})
+
+
 gulp.task('clean-htemplates', function(callback){ 
   del([config.htemplates], callback);
 });
@@ -94,22 +90,22 @@ gulp.task('create-templates', function(callback) {
     ],     
     
   })
-  .pipe(gulp.dest(config.htemplates));
-  callback();
+  .pipe(gulp.dest(config.htemplates))
+  .on('end', function () { callback(); });
+
   return;
 });
 
-gulp.task('copy-templates', function(){
-    return gulp 
-        .src(config.hwhole)
-        .pipe(gulp.dest(config.htemplates));
+gulp.task('copy-templates', function(callback){
+    gulp.src(config.hwhole)
+      .pipe(gulp.dest(config.htemplates));
+    callback();
+    return;
 })
 
-
 gulp.task('create-all-emails', cb => {
-  gulpSequence ( 'clean', ['create-templates', 'copy-templates'], 'create-htmlemails', 'create-txtemails', cb);
+  gulpSequence ( 'create-templates', 'copy-templates', 'create-htmlemails', 'create-txtemails', cb);
 });
-
 
 gulp.task('create-htmlemails' , function(callback){
   var tmpText;
@@ -119,7 +115,6 @@ gulp.task('create-htmlemails' , function(callback){
 
   for ( var i in fileList) {
        // skip .DS_Store
-   
         tmpText = fs.readFileSync(fileList[i], 'utf8');
         log('reading ' + fileList[i]);
         dir = fileList[i].replace (/email_text\//, ' ');
@@ -127,7 +122,8 @@ gulp.task('create-htmlemails' , function(callback){
         tmpText = tmpText.replace(/^\uFEFF/, '');
         emailObject = JSON.parse(tmpText);
 
-        var templateToUse = emailObject.template + '.html'
+        var templateToUse = figureOutTemplate(emailObject)  + '.html';
+        log('using template ' + templateToUse);
         stringReplaceText(emailObject, gulp.src(['htmlemailTemplates/' + templateToUse]), false)
             .pipe(rename(emailObject.emailName + '.html'))
             .pipe(inlinesource())
@@ -135,8 +131,7 @@ gulp.task('create-htmlemails' , function(callback){
                 preserveMediaQueries: true,
             }))
             .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .crazyaddress a {color: #AEAEAF !important;text-decoration: none;} .header .crazyaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
-            .pipe(gulp.dest(config.htmlemails + '/'  +  dir));
-
+            .pipe(gulp.dest(config.htmlemails + '/'  +  dir))
 
   }
     callback();
@@ -144,7 +139,7 @@ gulp.task('create-htmlemails' , function(callback){
 })
 
 
-gulp.task('create-onemail',['clean-emails'] , function(callback){
+gulp.task('create-onemail',['clean'] , function(callback){
   if (!argv.textfile) {
       log('Please send in a textfile name --textfile <filename>')
   }
@@ -158,8 +153,10 @@ gulp.task('create-onemail',['clean-emails'] , function(callback){
    tmpText = tmpText.replace(/^\uFEFF/, '');
    emailObject = JSON.parse(tmpText);
 
-   var templateToUse = emailObject.template + '.html'
+   var templateToUse = figureOutTemplate(emailObject) + '.html';
+   
    log('using ' + templateToUse);
+
    stringReplaceText(emailObject, gulp.src(['htmlemailTemplates/' + templateToUse]), false)
        .pipe(rename('index.html'))
        .pipe(inlinesource())
@@ -169,10 +166,10 @@ gulp.task('create-onemail',['clean-emails'] , function(callback){
        .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .crazyaddress a {color: #AEAEAF !important;text-decoration: none;} .header .crazyaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
        .pipe(gulp.dest(config.build));
 
-
    callback();
    return;
 })
+
 
 gulp.task('create-txtemails', function(callback){
   var tmpText;
@@ -189,7 +186,7 @@ gulp.task('create-txtemails', function(callback){
         tmpText = tmpText.replace(/^\uFEFF/, '');
         emailObject = JSON.parse(tmpText);
 
-        var templateToUse = emailObject.template + '.txt'
+        var templateToUse = figureOutTemplate(emailObject) + '.txt'
         stringReplaceText(emailObject, gulp.src(['textTemplates/' + templateToUse]), true)
             .pipe(rename(emailObject.emailName + '.txt'))
             .pipe(gulp.dest(config.textemails + '/' + dir));
@@ -257,11 +254,7 @@ gulp.task('browser-sync', function(){
   browserSync(options);
 
   gulp.watch([ config.styles, config.emailtext + '/*.json', config.templates + '*.html'], ['build', 'browser-sync', browserSync.reload]);
-
-
 });
-
-
 
 function changeEvent(event) {
     var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
@@ -374,5 +367,25 @@ function stringReplaceText(emailObject, inputStream, textOnly){
             .pipe(replace('<br>', ' '))
       }
       return inputStream;
+
+}
+
+function figureOutTemplate(emailObject, callback){
+  var templateName = ' ';
+  if (emailObject.secondaryMsg === 'true' && emailObject.button === 'true'){
+      templateName = 'SecondaryMsg_ButtonTemplate';
+  } else if (emailObject.secondaryMsg === 'true'){
+      templateName = 'SecondaryMsgTemplate';
+  } else if (emailObject.image === 'true' &&emailObject.button === 'true'){
+     templateName = 'ImageTemplate';
+  } else if (emailObject.twocolumns === 'true' && emailObject.button === 'true' ){
+      templateName = 'twocolumns_button';
+  } else if (emailObject.button === 'true' ){
+    templateName = 'ButtonTemplate';
+  } else {
+    templateName = 'BasicTemplate';
+  }
+
+  return (templateName)
 
 }

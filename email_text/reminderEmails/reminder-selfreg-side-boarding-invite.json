@@ -1,6 +1,9 @@
 {
     "emailName": "selfreg-side-boarding-invite",
-    "template": "SecondaryMsg_ButtonTemplate",   
+    "twocolumns": "false",  
+    "button": "true",
+    "image": "false",
+    "secondaryMsg": "true", 
     "header": "Welcome to Crazy People Dot COM",
     "message": "$INVITER wants to work with you on Crazy People Dot COM.",
     "firstParagraph": "$TEMPLATE_USERS_TEXT others have already found it is easier to get more done. Join them on Crazy People Dot COM",

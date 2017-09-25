@@ -1,6 +1,9 @@
 {
-    "emailName": "addressmismatch",
-    "template": "BasicTemplate",     
+    "emailName": "addressmismatch", 
+    "twocolumns": "false",  
+    "button": "false",
+    "image": "false",
+    "secondaryMsg": "false",   
     "header": "Order Issue for $customerName",
     "message": "Address mismatch",
     "firstParagraph": "Order #$orderId-$batchId",

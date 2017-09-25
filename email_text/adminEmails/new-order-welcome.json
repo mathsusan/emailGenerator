@@ -1,6 +1,9 @@
 {
-    "emailName": "new-dr-order-welcome",
-    "template": "ButtonTemplate",
+    "emailName": "new-order-welcome",
+    "twocolumns": "false", 
+    "button": "true",
+    "image": "false",
+    "secondaryMsg": "false",
     "header": "Welcome to Crazy People Dot COM",
     "message": "Let's get started",
     "firstParagraph": "Your organization is now using Crazy People Dot COM.",

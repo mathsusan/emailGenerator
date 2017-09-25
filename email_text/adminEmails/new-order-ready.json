@@ -1,6 +1,9 @@
 {
     "emailName": "new-order-ready",
-    "template": "ButtonTemplate",
+    "twocolumns": "false", 
+    "button": "true",
+    "image": "false",
+    "secondaryMsg": "false",
     "header": "Welcome to Crazy People Dot COM",
     "message": "Your account is ready!",
     "firstParagraph": "Thank you for your patience, your account is now active. Your organization is now using Crazy People Dot COM.",

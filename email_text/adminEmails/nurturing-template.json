@@ -1,6 +1,9 @@
 {
     "emailName": "nurturing-template",
-    "template": "ImageTemplate",
+    "twocolumns": "false", 
+    "button": "true",
+    "image": "true",
+    "secondaryMsg": "false",
     "href_logo": "$ADMIN_URL",
     "header": "Enabling your organization with Crazy People Dot COM is",
     "message": "Easy Peasy",
