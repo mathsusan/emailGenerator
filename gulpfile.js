@@ -372,9 +372,9 @@ function stringReplaceText(emailObject, inputStream, textOnly){
 
 function figureOutTemplate(emailObject, callback){
   var templateName = ' ';
-  if (emailObject.secondaryMsg === 'true' && emailObject.button === 'true'){
+  if (emailObject.secondary === 'true' && emailObject.button === 'true'){
       templateName = 'SecondaryMsg_ButtonTemplate';
-  } else if (emailObject.secondaryMsg === 'true'){
+  } else if (emailObject.secondary === 'true'){
       templateName = 'SecondaryMsgTemplate';
   } else if (emailObject.image === 'true' &&emailObject.button === 'true'){
      templateName = 'ImageTemplate';

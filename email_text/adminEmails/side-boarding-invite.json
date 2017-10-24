@@ -3,7 +3,7 @@
     "twocolumns": "false", 
     "button": "true",
     "image": "false",
-    "secondaryMsg": "true",   
+    "secondary": "true",   
     "header": "Welcome to Crazy People Dot COM",
     "message": "$INVITER sent you a message on Crazy People Dot COM.",
     "firstParagraph": "$TEMPLATE_USERS_TEXT others have already found it is easier to get more done. With Crazy People Dot COM.",

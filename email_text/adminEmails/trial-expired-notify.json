@@ -3,7 +3,7 @@
     "twocolumns": "true", 
     "button": "true",
     "image": "false",
-    "secondaryMsg": "false", 
+    "secondary": "false", 
     "message": "$CUSTOMER_NAME must purchase Crazy People Dot COM by $TRIAL_END_PLUS_GRACE_DATE or their data will no longer be available.",
     "firstParagraph": "We notified $CUSTOMER_NAME of their trial expiration and the conclusion of their trial services and admin privileges. We also informed them that if they decide to purchase before $TRIAL_END_PLUS_GRACE_DATE they can keep their organization's data.",
     "secondParagraph": "Get insights into $CUSTOMER_NAME trial usage and discuss their purchase options with them today.",

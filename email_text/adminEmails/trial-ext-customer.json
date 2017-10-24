@@ -3,7 +3,7 @@
     "twocolumns": "false", 
     "button": "false",
     "image": "false",
-    "secondaryMsg": "true",
+    "secondary": "true",
     "header": "Good news!",
     "message": "$CUSTOMER_NAME wants to order or extend their trial",
     "firstParagraph": "Customer contact info:",
