@@ -32,6 +32,8 @@ The results can be found in the build folder.
 
 Alwyas use Litmus or some other email testing software to test the email.
 
+video demo  - https://youtu.be/3cd4amrSi2s
+
 ## Author
 
 * **Susan McKenzie**  - [mathSusan](https://github.com/mathsusan)
