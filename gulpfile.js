@@ -137,7 +137,7 @@ gulp.task('create-htmlemails' , function(callback){
 })
 
 
-gulp.task('create-onemail', gulp.series('clean' , function(callback){
+gulp.task('create-onemail', gulp.series('clean-build' , function(callback){
   if (!argv.textfile) {
       myLog('Please send in a textfile name --textfile <filename>')
   }
@@ -195,7 +195,6 @@ gulp.task('create-txtemails', function(callback){
 })
 
 
-gulp.task('build', gulp.series('clean', 'create-onemail')); 
 
 /**
  * Serve and BrowserSync
@@ -203,7 +202,7 @@ gulp.task('build', gulp.series('clean', 'create-onemail'));
 
 
 
-gulp.task('browser-sync', function(){
+gulp.task('browser-sync', async function(){
   if (browserSync.active) {
     return;
   }
@@ -248,11 +247,14 @@ gulp.task('browser-sync', function(){
   };
 
   browserSync(options);
+  // gulp.watch(config.styles, gulp.series('build'));
+  
+  // gulp.watch(config.templates + '*.html').on('change', reload);
 
-  gulp.watch([ config.styles, config.emailtext + '/*.json', config.templates + '*.html'], ['build', 'browser-sync', browserSync.reload]);
+ gulp.watch([ config.styles, config.emailtext + '/*.json', config.templates + '*.html'], gulp.series('create-onemail', 'browser-sync')).on('change', reload);
 });
 
-gulp.task('serveone', gulp.series('build', 'browser-sync'));
+gulp.task('serveone', gulp.series('create-templates', 'copy-templates','create-onemail', 'browser-sync'));
 
 gulp.task('create-all-emails', gulp.series( 'create-templates', 'copy-templates', 'create-htmlemails', 'create-txtemails'));
 
