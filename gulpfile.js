@@ -23,12 +23,12 @@ gulp.task('clean', function(callback){
   gulpSequence(['clean-build',  'clean-htemplates'], callback);
 });
 
-gulp.task('clean-build', function(callback){
+gulp.task('clean-build', async function(callback){
   del([config.build], callback)
 })
 
 
-gulp.task('clean-htemplates', function(callback){ 
+gulp.task('clean-htemplates', async function(callback){ 
   del([config.htemplates], callback);
 });
 
@@ -297,7 +297,7 @@ function getFiles (dir, files_){
 }
 
 function stringReplaceText(emailObject, inputStream, textOnly){
-   var commonText = fs.readFileSync('./' + config.emailtext + '/commonText.json', 'utf8');
+   var commonText = fs.readFileSync('./' + 'commonText.json', 'utf8');
    commonText = commonText.replace(/^\uFEFF/, '');
    var commonObject = JSON.parse(commonText);
 
