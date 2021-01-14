@@ -1,6 +1,6 @@
 {
     "emailName": "reminder-invite",
-    "twocolumns": "false", 
+     
     "button": "true",
     "image": "false",
     "secondary": "true",

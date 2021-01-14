@@ -4,8 +4,8 @@ var argv = require('yargs').argv;
 var browserSync = require('browser-sync');
 var config = require('./gulp.config')();
 var del = require('del');
-var fs = require("fs");
-var inlinesource = require('gulp-inline-source');
+var fs = require("graceful-fs");
+var inlinesource = require('gulp-inline-source-html');
 var inlineCss = require('gulp-inline-css');
 var reload = browserSync.reload;
 var rename = require("gulp-rename");
@@ -14,9 +14,11 @@ var gulpSequence = require('gulp-sequence');
 var concat = require('gulp-concat-multi');
 var $ = require('gulp-load-plugins')({lazy: true});
 var port = config.defaultPort;
+var tasklisting = require('gulp-task-listing');
+var log = require('fancy-log');
 
-gulp.task('help', $.taskListing);
-gulp.task('default', ['help']);
+gulp.task('help', tasklisting);
+
 
 gulp.task('clean', function(callback){ 
   gulpSequence(['clean-build',  'clean-htemplates'], callback);
@@ -103,9 +105,7 @@ gulp.task('copy-templates', function(callback){
     return;
 })
 
-gulp.task('create-all-emails', cb => {
-  gulpSequence ( 'create-templates', 'copy-templates', 'create-htmlemails', 'create-txtemails', cb);
-});
+
 
 gulp.task('create-htmlemails' , function(callback){
   var tmpText;
@@ -116,22 +116,22 @@ gulp.task('create-htmlemails' , function(callback){
   for ( var i in fileList) {
        // skip .DS_Store
         tmpText = fs.readFileSync(fileList[i], 'utf8');
-        log('reading ' + fileList[i]);
+        myLog('reading ' + fileList[i]);
         dir = fileList[i].replace (/email_text\//, ' ');
         dir = dir.replace(/\/.+/g, ' ');
         tmpText = tmpText.replace(/^\uFEFF/, '');
         emailObject = JSON.parse(tmpText);
 
         var templateToUse = figureOutTemplate(emailObject)  + '.html';
-        log('using template ' + templateToUse);
+        myLog('using template ' + templateToUse);
         stringReplaceText(emailObject, gulp.src(['htmlemailTemplates/' + templateToUse]), false)
             .pipe(rename(emailObject.emailName + '.html'))
             .pipe(inlinesource())
             .pipe(inlineCss({
                 preserveMediaQueries: true,
             }))
-            .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .crazyaddress a {color: #AEAEAF !important;text-decoration: none;} .header .crazyaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
-            .pipe(gulp.dest(config.htmlemails + '/'  +  dir))
+          .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .crazyaddress a {color: #AEAEAF !important;text-decoration: none;} .header .crazyaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
+          .pipe(gulp.dest(config.htmlemails + '/'  +  dir))
 
   }
     callback();
@@ -139,36 +139,36 @@ gulp.task('create-htmlemails' , function(callback){
 })
 
 
-gulp.task('create-onemail',['clean'] , function(callback){
-  if (!argv.textfile) {
-      log('Please send in a textfile name --textfile <filename>')
-  }
-   var tmpText;
-   var emailObject;
-   var file = config.emailtext + '/' + argv.textfile;
+// gulp.task('create-onemail', gulp.series('clean' , function(callback){
+//   if (!argv.textfile) {
+//       myLog('Please send in a textfile name --textfile <filename>')
+//   }
+//    var tmpText;
+//    var emailObject;
+//    var file = config.emailtext + '/' + argv.textfile;
 
 
-   tmpText = fs.readFileSync(file, 'utf8');
-   log('reading ' + file);
-   tmpText = tmpText.replace(/^\uFEFF/, '');
-   emailObject = JSON.parse(tmpText);
+//    tmpText = fs.readFileSync(file, 'utf8');
+//    myLog('reading ' + file);
+//    tmpText = tmpText.replace(/^\uFEFF/, '');
+//    emailObject = JSON.parse(tmpText);
 
-   var templateToUse = figureOutTemplate(emailObject) + '.html';
+//    var templateToUse = figureOutTemplate(emailObject) + '.html';
    
-   log('using ' + templateToUse);
+//    myLog('using ' + templateToUse);
 
-   stringReplaceText(emailObject, gulp.src(['htmlemailTemplates/' + templateToUse]), false)
-       .pipe(rename('index.html'))
-       .pipe(inlinesource())
-       .pipe(inlineCss({
-           preserveMediaQueries: true,
-       }))
-       .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .crazyaddress a {color: #AEAEAF !important;text-decoration: none;} .header .crazyaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
-       .pipe(gulp.dest(config.build));
+//    stringReplaceText(emailObject, gulp.src(['htmlemailTemplates/' + templateToUse]), false)
+//        .pipe(rename('index.html'))
+//        .pipe(inlinesource())
+//        .pipe(inlineCss({
+//            preserveMediaQueries: true,
+//        }))
+//        .pipe(replace(/<style>/, '<style>  a:link,span.MsoHyperlink {mso-style-priority: 99;color: #aeaeaf;text-decoration: none;}  .crazyaddress a {color: #AEAEAF !important;text-decoration: none;} .header .crazyaddress a {color: #AEAEAF !important;text-decoration: none;  } .lead a {color: #6A6B6C !important;text-decoration: none;  } .bodyParagraph a {color: #858688 !important;text-decoration: none;  }' ))
+//        .pipe(gulp.dest(config.build));
 
-   callback();
-   return;
-})
+//    callback();
+//    return;
+// }))
 
 
 gulp.task('create-txtemails', function(callback){
@@ -180,7 +180,7 @@ gulp.task('create-txtemails', function(callback){
   for ( var i in fileList) {
 
         tmpText = fs.readFileSync(fileList[i], 'utf8');
-        log('reading ' + fileList[i]);
+        myLog('reading ' + fileList[i]);
         dir = fileList[i].replace (/email_text\//, ' ');
         dir = dir.replace(/\/.+/g, ' ');
         tmpText = tmpText.replace(/^\uFEFF/, '');
@@ -256,9 +256,12 @@ gulp.task('browser-sync', function(){
   gulp.watch([ config.styles, config.emailtext + '/*.json', config.templates + '*.html'], ['build', 'browser-sync', browserSync.reload]);
 });
 
+
+gulp.task('create-all-emails', gulp.series( 'create-templates', 'copy-templates', 'create-htmlemails', 'create-txtemails'));
+
 function changeEvent(event) {
     var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
-    log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
+    myLog('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
 }
 /**
  * Check if in Linux environment
@@ -267,15 +270,15 @@ function isLinux() {
   return process.platform === 'linux';
 }
 
-function log(msg) {
+function myLog(msg) {
     if (typeof(msg) === 'object') {
         for (var item in msg) {
             if (msg.hasOwnProperty(item)) {
-                $.util.log($.util.colors.blue(msg[item]));
+               log((msg[item]));
             }
         }
     } else {
-        $.util.log($.util.colors.blue(msg));
+       log((msg));
     }
 }
 
@@ -378,8 +381,6 @@ function figureOutTemplate(emailObject, callback){
       templateName = 'SecondaryMsgTemplate';
   } else if (emailObject.image === 'true' &&emailObject.button === 'true'){
      templateName = 'ImageTemplate';
-  } else if (emailObject.twocolumns === 'true' && emailObject.button === 'true' ){
-      templateName = 'twocolumns_button';
   } else if (emailObject.button === 'true' ){
     templateName = 'ButtonTemplate';
   } else {
