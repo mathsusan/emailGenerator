@@ -12,8 +12,7 @@ var rename = require("gulp-rename");
 var replace = require('gulp-replace');
 var gulpSequence = require('gulp-sequence');
 var concat = require('gulp-concat-multi');
-var $ = require('gulp-load-plugins')({lazy: true});
-var port = config.defaultPort;
+
 var tasklisting = require('gulp-task-listing');
 var log = require('fancy-log');
 

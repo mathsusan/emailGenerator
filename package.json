@@ -12,7 +12,6 @@
     "gulp-concat-multi": "^1.0.1",
     "gulp-inline-css": "^4.0.0",
     "gulp-inline-source-html": "1.0.3",
-    "gulp-load-plugins": "^2.0.6",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-sequence": "^1.0.0",
